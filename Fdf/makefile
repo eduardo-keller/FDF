@@ -1,0 +1,22 @@
+SRCF = teste.c 
+OBJF = $(SRCF:.c=.o)
+RM = rm -f
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+FDF = fdf
+
+all: $(FDF)
+
+$(FDF): $(OBJF)
+	$(CC) $(CFLAGS) $(OBJF) -o $(FDF) -lmlx -lX11 -lXext
+
+%.o: %.c
+	$(CC) -g $(CFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJF)
+
+fclean: clean
+	$(RM) $(FDF)
+
+re: fclean all
