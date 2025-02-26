@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:13:06 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/24 14:06:27 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/02/25 13:58:49 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	main(int argc, char **argv)
 	env.map_path = argv[1];
 	env.map_w = 0;
 	env.map_h = 0;
+	env.altitude = 1;
+	env.scale = 30;
+	env.iso_angle = 0.523599;
 	if (argc == 2)
 	{
 		map_info(&env);

@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/24 16:42:47 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/02/25 12:34:35 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	env_init(t_env *env)
 	env->win = mlx_new_window(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
 	if (env->win == NULL)
 		return (MLX_ERROR);
-	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT)
+	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	env->address = mlx_get_data_address(env->image, env->bits_per_pixel, env->line_lenght, env->endian);
-	
+	two_dim_point(env);
 }

@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:38:52 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/24 14:00:05 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/02/25 16:10:00 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,24 @@ void	three_dim_point(t_env *env)
 		env->y++;
 	}
 	free_final_tab(env);
+}
+
+void	two_dim_points(t_env *env)
+{
+	int	i;
+	int	z;
+
+	i = 0;
+	env->final_points = malloc(sizeof(t_fpoint) * env->map_h * env->map_w);
+	if(!env->final_points)
+		error("Malloc failed");
+	while (i < (env->map_w * env->map_h))
+	{
+		z = env->initial_points[i].z * env->altitude;
+		env->final_points[i].y = -z + (env->initial_points[i].x + env->initial_points[i].y) * sin(env->iso_angle);
+		env->final_points[i].x = (env->initial_points[i].x - env->initial_points[i].y) * cos(env->iso_angle);
+		env->final_points[i].y *= env->scale;
+		env->final_points[i].x *= env->scale;
+		i++;
+	}
 }
