@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:11:32 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/25 17:45:32 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/02/27 12:31:41 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	limits(t_env *env)
 	free (env->final_points);
 }
 
-no_limit(t_env *env)
+void	no_limit(t_env *env)
 {
 	right_limit(env);
 	low_limit(env);
@@ -59,7 +59,7 @@ void	right_limit(t_env *env)
 	x1 = env->final_points[env->i + 1].x;
 	y1 = env->final_points[env->i + 1].y;
 	env->c_x++;
-	//draw_line
+	draw_line(env, (t_fpoint){x0, y0}, (t_fpoint){x1, y1});
 }
 
 void	low_limit(t_env *env)
@@ -73,5 +73,5 @@ void	low_limit(t_env *env)
 	y0 = env->final_points[env->i].y;
 	x1 = env->final_points[env->i + env->map_w].x;
 	y1 = env->final_points[env->i + env->map_w].y;
-	//draw_line
+	draw_line(env, (t_fpoint){x0, y0}, (t_fpoint){x1, y1});
 }

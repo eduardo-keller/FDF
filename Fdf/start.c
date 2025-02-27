@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/25 12:34:35 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/02/27 18:22:35 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	parse_map(t_env *env)
 
 int	env_init(t_env *env)
 {
-	env->mlx  = mlx_init();
+	env->mlx = mlx_init();
 	if (env->mlx == NULL)
 	{
 		free(env->mlx);
@@ -110,6 +110,39 @@ int	env_init(t_env *env)
 	if (env->win == NULL)
 		return (MLX_ERROR);
 	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	env->address = mlx_get_data_address(env->image, env->bits_per_pixel, env->line_lenght, env->endian);
+	env->address = mlx_get_data_address(env->image, env->bits_per_pixel,
+			env->line_lenght, env->endian);
 	two_dim_point(env);
+	limits(env);
+	h_management(env);
+	mlx_loop_hook(env->mlx, render, env);
+	mlx_loop(env->mlx);
+	return (0);
 }
+
+int	render(t_env *env)
+{
+	//clear_image(env);
+	two_dim_point(env);
+	limits(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->image, 0, 0);
+	return (0);
+}
+
+// void clear_image(t_env *env)
+// {
+//     int h;
+//     int w;
+
+//     h = 0;
+//     while (h < WINDOW_HEIGHT)
+//     {
+//         w = 0;
+//         while (w < WINDOW_WIDTH)
+//         {
+//             put_pixel(env, w, h, BLACK); // Or any other background color
+//             w++;
+//         }
+//         h++;
+//     }
+// }
