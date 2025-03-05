@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 15:43:52 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2024/11/28 11:25:49 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 17:46:32 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 
@@ -26,7 +26,7 @@ int	ft_printf(const char *str, ...)
 			str++;
 			if (*str == '\0')
 				break ;
-			count += ft_print_format(*str, ap);
+			count += ft_printf_format(*str, ap);
 		}
 		else
 			count += write(1, str, 1);
@@ -36,31 +36,31 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-int	ft_print_format(char specifier, va_list ap)
+int	ft_printf_format(char specifier, va_list ap)
 {
 	int	count;	
 
 	count = 0;
 	if (specifier == 'c')
-		count += ft_putchar(va_arg(ap, int));
+		count += ft_printf_putchar(va_arg(ap, int));
 	else if (specifier == 's')
-		count += ft_putstr(va_arg(ap, char *));
+		count += ft_printf_putstr(va_arg(ap, char *));
 	else if (specifier == 'p')
-		count += ft_putptr(va_arg(ap, void *), "0123456789abcdef");
+		count += ft_printf_putptr(va_arg(ap, void *), "0123456789abcdef");
 	else if (specifier == 'i' || specifier == 'd')
-		count += ft_putnbr(va_arg(ap, int));
+		count += ft_printf_putnbr(va_arg(ap, int));
 	else if (specifier == 'u')
-		count += ft_putnbr_uns(va_arg(ap, unsigned int));
+		count += ft_printf_putnbr_uns(va_arg(ap, unsigned int));
 	else if (specifier == 'x')
-		count += ft_putnbr_hx(va_arg(ap, unsigned int), "0123456789abcdef");
+		count += ft_printf_putnbr_hx(va_arg(ap, unsigned int), "0123456789abcdef");
 	else if (specifier == 'X')
-		count += ft_putnbr_hx(va_arg(ap, unsigned int), "0123456789ABCDEF");
+		count += ft_printf_putnbr_hx(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	else if (specifier == '%')
 		count += write(1, "%", 1);
 	return (count);
 }
 
-int	ft_putchar(char c)
+int	ft_printf_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);

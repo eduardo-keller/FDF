@@ -1,18 +1,18 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:02:38 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2024/11/27 18:37:23 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 17:45:16 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_printf_putnbr(int n)
 {
 	int			count;
 	long int	nb;
@@ -30,7 +30,7 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	ft_putnbr_uns(unsigned int n)
+int	ft_printf_putnbr_uns(unsigned int n)
 {
 	int	count;
 
@@ -41,7 +41,7 @@ int	ft_putnbr_uns(unsigned int n)
 	return (count);
 }
 
-int	ft_putnbr_hx(unsigned int hx, char *base)
+int	ft_printf_putnbr_hx(unsigned int hx, char *base)
 {
 	int	count;
 
@@ -52,7 +52,7 @@ int	ft_putnbr_hx(unsigned int hx, char *base)
 	return (count);
 }
 
-int	ft_putstr(char *str)
+int	ft_printf_putstr(char *str)
 {
 	int	i;
 
@@ -67,7 +67,7 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-int	ft_putptr(void *ptr, char *base)
+int	ft_printf_putptr(void *ptr, char *base)
 {
 	int				count;
 	unsigned long	address;

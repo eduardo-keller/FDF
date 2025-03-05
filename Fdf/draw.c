@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:21:57 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/27 12:32:04 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 16:04:10 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "fdf.h"
 
@@ -49,5 +49,24 @@ void	put_pixel(t_env *env, int x, int y, int color)
 		pxl = env->address +(y * env->line_lenght
 				+ x * (env->bits_per_pixel / 8));
 		*(unsigned int *)pxl = color;
+	}
+}
+
+void	draw_background(t_env *env)
+{
+	int	h;
+	int	w;
+
+	h = 0;
+	w = 0;
+	while (h <= WINDOW_HEIGHT)
+	{
+		w = 0;
+		while (w <= WINDOW_WIDTH)
+		{
+			put_pixel(env, w, h, BLACK);
+			w++;
+		}
+		h++;
 	}
 }

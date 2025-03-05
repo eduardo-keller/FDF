@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/27 18:22:35 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 16:05:18 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "fdf.h"
 
@@ -122,27 +122,9 @@ int	env_init(t_env *env)
 
 int	render(t_env *env)
 {
-	//clear_image(env);
+	draw_background(env);
 	two_dim_point(env);
 	limits(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->image, 0, 0);
 	return (0);
 }
-
-// void clear_image(t_env *env)
-// {
-//     int h;
-//     int w;
-
-//     h = 0;
-//     while (h < WINDOW_HEIGHT)
-//     {
-//         w = 0;
-//         while (w < WINDOW_WIDTH)
-//         {
-//             put_pixel(env, w, h, BLACK); // Or any other background color
-//             w++;
-//         }
-//         h++;
-//     }
-// }

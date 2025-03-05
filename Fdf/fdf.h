@@ -1,15 +1,17 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/27 18:23:22 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 17:59:41 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
+#ifndef FDF_H
+# define FDF_H
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -18,6 +20,7 @@
 #define WINDOW_HEIGHT 1080
 #define ISO_ANGLE 0.523599
 #define RED 0xFF0000
+#define BLACK 0X000000
 
 typedef struct three_points
 {
@@ -69,7 +72,6 @@ void	check_format(t_env *env);
 void	parse_map(t_env *env);
 int		env_init(t_env *env);
 int		render(t_env *env);
-// void clear_image(t_env *env)
 //points.c
 void	three_dim_point(t_env *env);
 void	two_dim_points(t_env *env); //changes from original. used standard iso tranformation.
@@ -84,12 +86,13 @@ void	low_limit(t_env *env);
 //draw.c
 void	draw_line(t_env *env, t_fpoint point0, t_fpoint point1);
 void	put_pixel(t_env *env, int x, int y, int color);
+void	draw_background(t_env *env);
 //hooks.c
 void	h_management(t_env *env);
 int		key_handler(int key, t_env *env);
 int		close_win(t_env *env);
 
-//get_next_line
+/*get_next_line
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(char *s, int c);
@@ -98,4 +101,6 @@ char	*ft_strjoin(char *s1, char *s2);
 //split
 char	**ft_split(char const *s, char c);
 //libft
-int		ft_atoi(char *ptr);
+int		ft_atoi(char *ptr);*/
+
+#endif

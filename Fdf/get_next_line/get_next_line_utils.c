@@ -1,18 +1,18 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:41:24 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2024/12/26 11:59:33 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/05 17:48:56 by ekeller-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "get_next_line.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_gnl_strchr(char *s, int c)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_gnl_calloc(size_t nmemb, size_t size)
 {
 	char	*str;
 	size_t	total_mem;
@@ -50,7 +50,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	char	*new_string;
 	int		i;
@@ -78,7 +78,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (new_string);
 }
 
-int	ft_strlen(char *s)
+int	ft_gnl_strlen(char *s)
 {
 	int	len;
 
