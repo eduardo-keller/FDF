@@ -6,7 +6,7 @@
 /*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:54:47 by ekeller-          #+#    #+#             */
-/*   Updated: 2025/03/05 17:56:33 by ekeller-         ###   ########.fr       */
+/*   Updated: 2025/03/06 18:41:26 by ekeller-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,6 +19,8 @@
 # include <fcntl.h>
 
 char	**ft_split(char const *s, char c);
-int	ft_atoi(char *ptr);
+int	    ft_atoi(char *ptr);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif

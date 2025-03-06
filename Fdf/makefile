@@ -1,22 +1,52 @@
-SRCF = teste.c 
-OBJF = $(SRCF:.c=.o)
-RM = rm -f
+# Name of the final executable
+NAME = fdf
+
+# Source files for fdf
+SRC = draw.c fdf.c hooks.c limits.c points.c start.c
+
+# Compiler and flags
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-FDF = fdf
+FLAGS = -Wall -Wextra -Werror
 
-all: $(FDF)
+# Object files (will be automatically generated from the source files)
+OBJECTS = $(SRC:%.c=%.o)
 
-$(FDF): $(OBJF)
-	$(CC) $(CFLAGS) $(OBJF) -o $(FDF) -lmlx -lX11 -lXext
+# Include directories (adjust the paths if needed)
+INCLUDES = -Ilibft -Iminilibx-linux
 
+# Libraries to link against
+LIBS = -Llibft -lft -Lminilibx-linux -lmlx -lm
+
+# Clean-up command
+RM = rm -f
+
+# Default target: compile the executable
+all: $(NAME)
+
+# Compile libft (ensure libft is up-to-date by calling its Makefile)
+libft:
+	$(MAKE) -C libft
+
+# Create the executable by compiling the object files and linking with libraries
+$(NAME): libft $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME) $(LIBS)
+
+# Compile object files from source files
 %.o: %.c
-	$(CC) -g $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
+# Clean object files
 clean:
-	$(RM) $(OBJF)
+	$(RM) $(OBJECTS)
+	$(MAKE) -C libft clean
 
+# Clean everything (object files and the executable)
 fclean: clean
-	$(RM) $(FDF)
+	$(RM) $(NAME)
+	$(MAKE) -C libft fclean
 
+# Rebuild everything
 re: fclean all
+
+# Specify the targets that are not actual files
+.PHONY: all clean fclean re libft
