@@ -6,11 +6,12 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:13:06 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/25 13:58:49 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:30:18 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int	main(int argc, char **argv)
 {
@@ -27,7 +28,7 @@ int	main(int argc, char **argv)
 		map_info(&env);
 		check_format(&env);
 		parse_map(&env);
-		three_dim_point(&env);
+		three_dim_points(&env);
 		env_init(&env);
 	}
 }

@@ -8,7 +8,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJECTS = $(SRC:%.c=%.o)
 
-INCLUDES = 	libft.h get_next_line.h ft_printf.h
+INCLUDES = 	libft.h
 
 RM = rm -f
 

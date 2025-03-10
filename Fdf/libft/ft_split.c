@@ -6,11 +6,12 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:33:54 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2024/11/11 17:22:14 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/10 12:29:35 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "get_next_line.h"
 
 static size_t	count_words(char const *s, char c)
 {

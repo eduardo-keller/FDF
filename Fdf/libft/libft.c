@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "get_next_line.h"
 
 int	ft_atoi(char *ptr)
 {
@@ -24,34 +25,30 @@ int	ft_atoi(char *ptr)
 	return(out * sign);	
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*allocd_mem;
-
-	allocd_mem = (void *) malloc (nmemb * size);
-	if (allocd_mem == NULL)
-		return (NULL);
-	ft_bzero(allocd_mem, nmemb * size);
-	return (allocd_mem);
-}
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substring;
-	size_t	length_s;
+	char	*sub_s;
 	size_t	i;
+	size_t	len_s;
 
-	length_s = ft_strlen(s);
-	if (start >= length_s)
-		return (ft_strdup(""));
-	if (length_s - start < len)
-		len = length_s - start;
-	substring = malloc((len + 1) * sizeof(char));
-	if (substring == NULL)
+	len_s = 0;
+	i = 0;
+	if (!s)
 		return (NULL);
-	i = -1;
-	while (s[++i + start] && (i < len))
-		substring[i] = s[start + i];
-	substring[len] = '\0';
-	return (substring);
+	while (s[len_s])
+		len_s++;
+	if (start >= len_s)
+		return (ft_calloc(1, sizeof(char)));
+	if (len > len_s - start)
+		len = len_s - start;
+	sub_s = malloc(len + 1);
+	if (!sub_s)
+		return (NULL);
+	while (i < len && s[start + i])
+	{
+		sub_s[i] = s[start + i];
+		i++;
+	}
+	sub_s[i] = '\0';
+	return (sub_s);
 }

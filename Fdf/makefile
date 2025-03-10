@@ -11,11 +11,11 @@ FLAGS = -Wall -Wextra -Werror
 # Object files (will be automatically generated from the source files)
 OBJECTS = $(SRC:%.c=%.o)
 
-# Include directories (adjust the paths if needed)
-INCLUDES = -Ilibft -Iminilibx-linux
+# Include directories
+INCLUDES = -Ilibft -I.
 
 # Libraries to link against
-LIBS = -Llibft -lft -Lminilibx-linux -lmlx -lm
+LIBS = -Llibft -lft -L. -lmlx_Linux -lm -lX11 -lXext
 
 # Clean-up command
 RM = rm -f
@@ -31,9 +31,9 @@ libft:
 $(NAME): libft $(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME) $(LIBS)
 
-# Compile object files from source files
+# Compile object files from source files (FIXED: Added $(INCLUDES))
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 # Clean object files
 clean:

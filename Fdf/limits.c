@@ -6,11 +6,12 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:11:32 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/02/27 12:31:41 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:16:02 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 void	limits(t_env *env)
 {

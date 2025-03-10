@@ -1,19 +1,25 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/05 17:59:41 by ekeller-         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:30:45 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
+#include "mlx.h"
+#include "libft.h"
+
 
 #define MLX_ERROR 1
 #define WINDOW_WIDTH 1920
@@ -73,7 +79,7 @@ void	parse_map(t_env *env);
 int		env_init(t_env *env);
 int		render(t_env *env);
 //points.c
-void	three_dim_point(t_env *env);
+void	three_dim_points(t_env *env);
 void	two_dim_points(t_env *env); //changes from original. used standard iso tranformation.
 //fdf.c
 int		error(char *error_message);
@@ -92,6 +98,7 @@ void	h_management(t_env *env);
 int		key_handler(int key, t_env *env);
 int		close_win(t_env *env);
 
+int	ft_printf(const char *str, ...);
 /*get_next_line
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t nmemb, size_t size);

@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/05 16:05:18 by ekeller-         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:33:51 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "fdf.h"
 
@@ -110,9 +110,9 @@ int	env_init(t_env *env)
 	if (env->win == NULL)
 		return (MLX_ERROR);
 	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	env->address = mlx_get_data_address(env->image, env->bits_per_pixel,
-			env->line_lenght, env->endian);
-	two_dim_point(env);
+	env->address = mlx_get_data_addr(env->image, &env->bits_per_pixel,
+			&env->line_lenght, &env->endian); // added & in bits, line_lenght and endian
+	two_dim_points(env);
 	limits(env);
 	h_management(env);
 	mlx_loop_hook(env->mlx, render, env);
@@ -123,7 +123,7 @@ int	env_init(t_env *env)
 int	render(t_env *env)
 {
 	draw_background(env);
-	two_dim_point(env);
+	two_dim_points(env);
 	limits(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->image, 0, 0);
 	return (0);
