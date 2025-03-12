@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 16:34:35 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/12 18:14:03 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 
 #define MLX_ERROR 1
-#define WINDOW_WIDTH 1920 // 1920
-#define WINDOW_HEIGHT 1080 // 1080
+#define WINDOW_WIDTH 1024 // 1920
+#define WINDOW_HEIGHT 768 // 1080
 //#define ISO_ANGLE 0.523599
 #define RED 0xFF0000
 #define BLACK 0X000000
@@ -62,7 +62,7 @@ typedef struct s_env
 	int			y;
 	int			map_w;
 	int			map_h;
-	void		*mlx;
+	void		*mlx;	
 	void		*win;
 	void		*image;
 	void		*address;
@@ -88,6 +88,8 @@ int		render(t_env *env);
 //points.c
 void	three_dim_points(t_env *env);
 void	two_dim_points(t_env *env); //changes from original. used standard iso tranformation.
+int		min(int a, int b);
+int		define_scale(t_env *env);
 //fdf.c
 int		error(char *error_message);
 void	free_final_tab(t_env *env);

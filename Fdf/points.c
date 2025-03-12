@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:38:52 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 16:53:18 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/12 18:10:54 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ int	define_scale(t_env *env)
 	
 	scale_x = WINDOW_WIDTH / env->map_w;
 	scale_y = WINDOW_HEIGHT / env->map_h;
-	scale = min(scale_x, scale_y);
-	if (scale_factor < 4)
+	env->scale = min(scale_x, scale_y);
+	if (env->scale < 4)
 		return (1);
-	scale_factor /= 3; 
+	env->scale /= 3;
+	return (1); 
 }
 
 /*Fill in the two-dimensional table*/

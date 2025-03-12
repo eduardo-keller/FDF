@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:13:06 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 16:54:33 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/12 17:48:05 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 		check_format(&env);
 		parse_map(&env);
 		three_dim_points(&env);
+		define_scale(&env);
 		env_init(&env);
 	}
 }
