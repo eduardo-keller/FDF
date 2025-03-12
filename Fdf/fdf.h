@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/10 15:30:45 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/12 16:34:35 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@
 
 
 #define MLX_ERROR 1
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
-#define ISO_ANGLE 0.523599
+#define WINDOW_WIDTH 1920 // 1920
+#define WINDOW_HEIGHT 1080 // 1080
+//#define ISO_ANGLE 0.523599
 #define RED 0xFF0000
 #define BLACK 0X000000
+
+# define ZOOM_FACTOR 1.1
+# define TRANS_FACTOR_X 10
+# define TRANS_FACTOR_Y 5
+# define ALTITUDE 0.1
 
 typedef struct three_points
 {
@@ -70,6 +75,8 @@ typedef struct s_env
 	int			i;
 	float		altitude;
 	float		iso_angle;
+	int			translation; //
+	float		zoom; //
 }	t_env;
 
 //start.c
@@ -91,12 +98,13 @@ void	right_limit(t_env *env);
 void	low_limit(t_env *env);
 //draw.c
 void	draw_line(t_env *env, t_fpoint point0, t_fpoint point1);
-void	put_pixel(t_env *env, int x, int y, int color);
+void	put_pixel(t_env *env, int x, int y, int color); //altered draw_line to call put_pixel with positive coordinates.  
 void	draw_background(t_env *env);
 //hooks.c
 void	h_management(t_env *env);
 int		key_handler(int key, t_env *env);
 int		close_win(t_env *env);
+int	mouse_handler(int mousecode, int x, int y, t_env *env); //
 
 int	ft_printf(const char *str, ...);
 /*get_next_line

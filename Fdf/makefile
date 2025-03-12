@@ -5,7 +5,7 @@ NAME = fdf
 SRC = draw.c fdf.c hooks.c limits.c points.c start.c
 
 # Compiler and flags
-CC = cc
+CC = cc -g
 FLAGS = -Wall -Wextra -Werror
 
 # Object files (will be automatically generated from the source files)
@@ -24,11 +24,11 @@ RM = rm -f
 all: $(NAME)
 
 # Compile libft (ensure libft is up-to-date by calling its Makefile)
-libft:
+libft/libft.a:
 	$(MAKE) -C libft
 
 # Create the executable by compiling the object files and linking with libraries
-$(NAME): libft $(OBJECTS)
+$(NAME): libft/libft.a $(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME) $(LIBS)
 
 # Compile object files from source files (FIXED: Added $(INCLUDES))

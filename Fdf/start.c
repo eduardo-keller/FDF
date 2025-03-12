@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/10 15:33:51 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/12 15:22:37 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	parse_map(t_env *env)
 	int		fd;
 
 	fd = open(env->map_path, O_RDONLY);
-	env->final_tab = malloc(sizeof(int) * env->map_h);
+	env->final_tab = malloc(sizeof(int *) * env->map_h);
 	if (!env->final_tab)
 		error("Malloc failed");
 	while (env->y < env->map_h)
