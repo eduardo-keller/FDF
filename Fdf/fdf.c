@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:13:06 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 17:48:05 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:17:59 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	main(int argc, char **argv)
 	env.map_w = 0;
 	env.map_h = 0;
 	env.altitude = 1;
-	//env.scale = 29;  swiss is 30
+	//env.scale = 2;
 	env.iso_angle = 0.523599; // from arab dude 0.523599, from swiss 7.37
-	env.translation = 1; //
+	env.translation_y = 1;
+	env.translation_x = 1; //
 	env.y = 0; //
 	if (argc == 2)
 	{
@@ -35,6 +36,8 @@ int	main(int argc, char **argv)
 		define_scale(&env);
 		env_init(&env);
 	}
+	else
+		error("error");
 }
 
 int	error(char *error_message)

@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 18:14:03 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:01:53 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 
 
 #define MLX_ERROR 1
-#define WINDOW_WIDTH 1024 // 1920
-#define WINDOW_HEIGHT 768 // 1080
+#define WINDOW_WIDTH 1920 // 1920 1024
+#define WINDOW_HEIGHT 1080 // 1080 768 
 //#define ISO_ANGLE 0.523599
-#define RED 0xFF0000
+#define RED 0x00FF00
 #define BLACK 0X000000
 
 # define ZOOM_FACTOR 1.1
 # define TRANS_FACTOR_X 10
-# define TRANS_FACTOR_Y 5
+# define TRANS_FACTOR_Y 10
 # define ALTITUDE 0.1
 
 typedef struct three_points
@@ -75,7 +75,8 @@ typedef struct s_env
 	int			i;
 	float		altitude;
 	float		iso_angle;
-	int			translation; //
+	int			translation_x;
+	int			translation_y; //
 	float		zoom; //
 }	t_env;
 

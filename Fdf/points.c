@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:38:52 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 18:10:54 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/17 12:41:59 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,27 @@ int	min(int a, int b)
 		return (b);
 }
 
+// int	define_scale(t_env *env)
+// {
+// 	int	scale_x;
+// 	int	scale_y;
+	
+// 	scale_x = WINDOW_WIDTH / env->map_w;
+// 	scale_y = WINDOW_HEIGHT / env->map_h;
+// 	env->scale = min(scale_x, scale_y);
+// 	if (env->scale < 4)
+// 		return (1);
+// 	env->scale /= 3;
+// 	return (1); 
+// }
+
 int	define_scale(t_env *env)
 {
-	int	scale_x;
-	int	scale_y;
+	float max_dimension; 
 	
-	scale_x = WINDOW_WIDTH / env->map_w;
-	scale_y = WINDOW_HEIGHT / env->map_h;
-	env->scale = min(scale_x, scale_y);
-	if (env->scale < 4)
-		return (1);
-	env->scale /= 3;
-	return (1); 
+	max_dimension = fmaxf(env->map_w, env->map_h);
+    env->scale = fminf(WINDOW_WIDTH, WINDOW_HEIGHT) / max_dimension * 0.7;
+	return (1);
 }
 
 /*Fill in the two-dimensional table*/

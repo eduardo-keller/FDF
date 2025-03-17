@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:21:57 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 17:52:57 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/17 13:04:08 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	draw_line(t_env *env, t_fpoint point0, t_fpoint point1)
 	y = point0.y;
 	while (i < step)
 	{
-		put_pixel(env, x + WINDOW_WIDTH / 2, y + WINDOW_HEIGHT / 2, RED);
+		//put_pixel(env, x + WINDOW_WIDTH / 2 + env->translation_x, y + WINDOW_HEIGHT / 2 + env->translation_y, RED);
+		put_pixel(env, x + WINDOW_WIDTH / 2 + env->translation_x, y + WINDOW_HEIGHT / 2 + env->translation_y - 100, RED);
 		x = x + delta.dx;
 		y = y + delta.dy;
 		i++;
