@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/18 17:09:51 by ekeller-@st       #+#    #+#             */
+/*   Updated: 2025/03/18 17:12:18 by ekeller-@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx.h for MinilibX in 
 ** 
@@ -12,7 +24,6 @@
 **   MinilibX -  Please report bugs
 */
 
-
 /*
 ** FR msg - FR msg - FR msg
 **
@@ -26,13 +37,11 @@
 ** de ce type.
 */
 
-
 #ifndef MLX_H
 
-#define	MLX_H
+# define	MLX_H
 
-
-void	*mlx_init();
+void	*mlx_init(void);
 /*
 **  needed before everything else.
 **  return (void *)0 if failed
@@ -47,20 +56,19 @@ void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 /*
 **  return void *0 if failed
 */
-int	mlx_clear_window(void *mlx_ptr, void *win_ptr);
-int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
+int		mlx_clear_window(void *mlx_ptr, void *win_ptr);
+int		mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 /*
 **  origin for x & y is top left corner of the window
 **  y down is positive
 **  color is 0x00RRGGBB
 */
 
-
 /*
 ** Image stuff
 */
 
-void	*mlx_new_image(void *mlx_ptr,int width,int height);
+void	*mlx_new_image(void *mlx_ptr, int width, int height);
 /*
 **  return void *0 if failed
 **  obsolete : image2 data is stored using bit planes

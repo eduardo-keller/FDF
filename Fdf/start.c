@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/12 15:22:37 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/18 17:06:49 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,15 @@ void	parse_map(t_env *env)
 	char	**line_tab;
 	char	*line;
 	int		fd;
+	char	**z_color;
 
 	fd = open(env->map_path, O_RDONLY);
-	env->final_tab = malloc(sizeof(int *) * env->map_h);
+	env->final_tab = malloc(sizeof(t_ipoint *) * env->map_h);
 	if (!env->final_tab)
 		error("Malloc failed");
 	while (env->y < env->map_h)
 	{
-		env->final_tab[env->y] = malloc(sizeof(int) * env->map_w);
+		env->final_tab[env->y] = malloc(sizeof(t_ipoint) * env->map_w);
 		if (!env->final_tab[env->y])
 			error("Malloc failed");
 		line = get_next_line(fd);
@@ -90,12 +91,26 @@ void	parse_map(t_env *env)
 		env->x = -1;
 		while (++env->x < env->map_w)
 		{
-			env->final_tab[env->y][env->x] = ft_atoi(line_tab[env->x]);
+			z_color = ft_split(line_tab[env->x], ',');
+			if (z_color[0] && z_color[1])
+			{
+				env->final_tab[env->y][env->x].z = ft_atoi(z_color[0]);
+				env->final_tab[env->y][env->x].color = hex_to_int(z_color[1] + 2);
+				free(z_color[0]);
+				free(z_color[1]);
+			}
+			else
+			{
+				env->final_tab[env->y][env->x].z = ft_atoi(line_tab[env->x]);
+				env->final_tab[env->y][env->x].color = COLOR;
+			}
+			free(z_color);
 			free(line_tab[env->x]);
 		}
 		env->y++;
 		free(line_tab);
 	}
+	close(fd);
 }
 
 int	env_init(t_env *env)
@@ -111,7 +126,7 @@ int	env_init(t_env *env)
 		return (MLX_ERROR);
 	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	env->address = mlx_get_data_addr(env->image, &env->bits_per_pixel,
-			&env->line_lenght, &env->endian); // added & in bits, line_lenght and endian
+			&env->line_lenght, &env->endian);
 	two_dim_points(env);
 	limits(env);
 	h_management(env);
