@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:13:06 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/18 16:52:49 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:45:18 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ int	main(int argc, char **argv)
 	}
 	else
 		error("error");
+}
+
+int	env_init(t_env *env)
+{
+	env->mlx = mlx_init();
+	if (env->mlx == NULL)
+	{
+		free(env->mlx);
+		return (MLX_ERROR);
+	}
+	env->win = mlx_new_window(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+	if (env->win == NULL)
+		return (MLX_ERROR);
+	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	env->address = mlx_get_data_addr(env->image, &env->bits_per_pixel,
+			&env->line_lenght, &env->endian);
+	two_dim_points(env);
+	limits(env);
+	h_management(env);
+	mlx_loop_hook(env->mlx, render, env);
+	mlx_loop(env->mlx);
+	return (0);
 }
 
 int	error(char *error_message)

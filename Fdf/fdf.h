@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:04:14 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/18 16:57:33 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:45:25 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define COLOR 0x00FF00
 # define BLACK 0X000000
 
-# define ZOOM_FACTOR 1.1
+# define ZOOM_FACTOR 1.1//redux_functions.c
 # define TRANS_FACTOR_X 10
 # define TRANS_FACTOR_Y 10
 # define ALTITUDE 0.1
@@ -131,8 +131,6 @@ typedef struct s_env
 void	map_info(t_env *env);
 void	check_format(t_env *env);
 void	parse_map(t_env *env);
-int		env_init(t_env *env);
-int		render(t_env *env);
 //points.c
 void	three_dim_points(t_env *env);
 void	two_dim_points(t_env *env);
@@ -142,6 +140,7 @@ int		define_scale(t_env *env);
 int		error(char *error_message);
 void	free_final_tab(t_env *env);
 int		hex_to_int(const char *hex);
+int		env_init(t_env *env);
 //limits.c
 void	limits(t_env *env);
 void	no_limit(t_env *env);
@@ -151,9 +150,9 @@ void	low_limit(t_env *env);
 void	draw_line(t_env *env, t_fpoint point0, t_fpoint point1);
 void	put_pixel(t_env *env, int x, int y, int color);
 void	draw_background(t_env *env);
+int		render(t_env *env);
 //hooks.c
 void	h_management(t_env *env);
 int		key_handler(int key, t_env *env);
 int		close_win(t_env *env);
-
 #endif

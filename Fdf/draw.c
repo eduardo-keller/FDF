@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:21:57 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/18 17:08:26 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:45:09 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,13 @@ void	draw_background(t_env *env)
 		}
 		h++;
 	}
+}
+
+int	render(t_env *env)
+{
+	draw_background(env);
+	two_dim_points(env);
+	limits(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->image, 0, 0);
+	return (0);
 }

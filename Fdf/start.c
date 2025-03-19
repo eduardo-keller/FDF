@@ -6,11 +6,22 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:12:22 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/18 17:06:49 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:46:02 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	handle_error(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	if (line)
+		free(line);
+	close(fd);
+	error("Wrong map format");
+}
 
 void	map_info(t_env *env)
 {
@@ -62,11 +73,38 @@ void	check_format(t_env *env)
 		}
 		free(tab);
 		if (x != env->map_w)
-			error("Wrong map format");
+			handle_error(fd);
 		line = get_next_line(fd);
 	}
 	free(line);
 	close(fd);
+}
+
+static void	parse_line(t_env *env, char **line_tab)
+{
+	char	**z_color;
+
+	env->x = -1;
+	while (++env->x < env->map_w)
+	{
+		z_color = ft_split(line_tab[env->x], ',');
+		if (z_color[0] && z_color[1])
+		{
+			env->final_tab[env->y][env->x].z = ft_atoi(z_color[0]);
+			env->final_tab[env->y][env->x].color = hex_to_int(z_color[1] + 2);
+			free(z_color[0]);
+			free(z_color[1]);
+		}
+		else
+		{
+			env->final_tab[env->y][env->x].z = ft_atoi(line_tab[env->x]);
+			env->final_tab[env->y][env->x].color = COLOR;
+			if (z_color[0])
+				free(z_color[0]);
+		}
+		free(z_color);
+		free(line_tab[env->x]);
+	}
 }
 
 void	parse_map(t_env *env)
@@ -74,7 +112,6 @@ void	parse_map(t_env *env)
 	char	**line_tab;
 	char	*line;
 	int		fd;
-	char	**z_color;
 
 	fd = open(env->map_path, O_RDONLY);
 	env->final_tab = malloc(sizeof(t_ipoint *) * env->map_h);
@@ -88,58 +125,12 @@ void	parse_map(t_env *env)
 		line = get_next_line(fd);
 		line_tab = ft_split(line, ' ');
 		free(line);
-		env->x = -1;
-		while (++env->x < env->map_w)
-		{
-			z_color = ft_split(line_tab[env->x], ',');
-			if (z_color[0] && z_color[1])
-			{
-				env->final_tab[env->y][env->x].z = ft_atoi(z_color[0]);
-				env->final_tab[env->y][env->x].color = hex_to_int(z_color[1] + 2);
-				free(z_color[0]);
-				free(z_color[1]);
-			}
-			else
-			{
-				env->final_tab[env->y][env->x].z = ft_atoi(line_tab[env->x]);
-				env->final_tab[env->y][env->x].color = COLOR;
-			}
-			free(z_color);
-			free(line_tab[env->x]);
-		}
+		parse_line(env, line_tab);
 		env->y++;
 		free(line_tab);
 	}
+	line = get_next_line(fd);
+	if (line)
+		free(line);
 	close(fd);
-}
-
-int	env_init(t_env *env)
-{
-	env->mlx = mlx_init();
-	if (env->mlx == NULL)
-	{
-		free(env->mlx);
-		return (MLX_ERROR);
-	}
-	env->win = mlx_new_window(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
-	if (env->win == NULL)
-		return (MLX_ERROR);
-	env->image = mlx_new_image(env->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	env->address = mlx_get_data_addr(env->image, &env->bits_per_pixel,
-			&env->line_lenght, &env->endian);
-	two_dim_points(env);
-	limits(env);
-	h_management(env);
-	mlx_loop_hook(env->mlx, render, env);
-	mlx_loop(env->mlx);
-	return (0);
-}
-
-int	render(t_env *env)
-{
-	draw_background(env);
-	two_dim_points(env);
-	limits(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->image, 0, 0);
-	return (0);
 }

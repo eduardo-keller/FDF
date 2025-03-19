@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 16:46:49 by ekeller-@st       #+#    #+#             */
+/*   Updated: 2025/03/19 17:22:29 by ekeller-@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "get_next_line.h"
 
@@ -8,21 +20,21 @@ int	ft_atoi(char *ptr)
 
 	sign = 1;
 	out = 0;
-	while((*ptr >= 9 && *ptr <= 13) || *ptr == 32)
+	while ((*ptr >= 9 && *ptr <= 13) || *ptr == 32)
 		ptr++;
-	if(*ptr == '-')
+	if (*ptr == '-')
 	{
 		sign = -1;
 		ptr++;
 	}
-	else if(*ptr == '+')
+	else if (*ptr == '+')
 		ptr++;
-	while(*ptr >= '0' && *ptr <= '9')
+	while (*ptr >= '0' && *ptr <= '9')
 	{
 		out = (out * 10) + (*ptr - '0');
 		ptr++;
 	}
-	return(out * sign);	
+	return (out * sign);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:54:47 by ekeller-          #+#    #+#             */
-/*   Updated: 2025/03/10 15:22:10 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 17:18:31 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #  define BUFFER_SIZE 1000
 # endif
 
-int	    ft_atoi(char *ptr);
+int		ft_atoi(char *ptr);
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);

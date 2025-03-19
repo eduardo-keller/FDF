@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekeller- <ekeller-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 11:39:46 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/05 17:50:15 by ekeller-         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:12:04 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -122,7 +122,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = get_line(buffer);
 	if (!line || line[0] == '\0')
-		return (ft_free(buffer, line));
+	{	
+		ft_free(buffer, line);
+		buffer = NULL;
+		return (NULL);
+	}
 	buffer = get_buffer_update(buffer);
 	return (line);
 }

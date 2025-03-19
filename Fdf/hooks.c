@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:12:49 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/18 16:57:00 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/19 17:31:08 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ int	key_handler(int key, t_env *env)
 
 int	close_win(t_env *env)
 {
-	mlx_destroy_window(env->mlx, env->win);
+	if (env->image)
+		mlx_destroy_image(env->mlx, env->image);
+	if (env->win)
+		mlx_destroy_window(env->mlx, env->win);
+	if (env->mlx)
+		mlx_destroy_display(env->mlx);
+	free(env->mlx);
+	if (env->initial_points)
+	{
+		free(env->initial_points);
+		env->initial_points = NULL;
+	}
 	exit (0);
 }
