@@ -6,7 +6,7 @@
 /*   By: ekeller-@student.42sp.org.br <ekeller-@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:09:51 by ekeller-@st       #+#    #+#             */
-/*   Updated: 2025/03/19 17:46:54 by ekeller-@st      ###   ########.fr       */
+/*   Updated: 2025/03/20 11:55:16 by ekeller-@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel,
 */
 int		mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr,
 			int x, int y);
-			int		mlx_loop (void *mlx_ptr);
+int		mlx_loop(void *mlx_ptr);
 /*
 ** dealing with Events
 */
